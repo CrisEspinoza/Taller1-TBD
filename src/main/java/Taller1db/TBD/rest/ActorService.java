@@ -15,7 +15,6 @@ import java.sql.Timestamp;
 
 import java.util.List;
 
-@CrossOrigin
 @RestController
 @RequestMapping("/actors")
 public class ActorService {
@@ -23,12 +22,14 @@ public class ActorService {
     @Autowired
     private ActorRepository actorRepository;
 
+    @CrossOrigin
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public List<Actor> getAllActors() {
         return actorRepository.findAll();
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Actor getActor(@PathVariable Integer id) {
@@ -36,6 +37,7 @@ public class ActorService {
         return actorRepository.findActorById(actorId);
     }
 
+    @CrossOrigin
     @PostMapping("/create")
     @ResponseBody
     public Actor create(@RequestBody Actor resource) throws ParseException {
